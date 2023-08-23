@@ -1,0 +1,121 @@
+body {
+    padding: 1rem;
+}
+
+h1 {
+    color: #1295FA;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.h3_subtitle {
+    background-color: #AEFAFC;
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.9rem;
+    color: #9126E8;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.h3_start {
+    color:#1295FA;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.h3_result {
+    color: #9A30F3;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.label_ {
+    background-color: #fff;
+    border-radius: 19%;
+    color: #54C546;
+    font-size: 0.7rem;
+    padding: 0.1rem;
+}
+
+#start-button {
+    color: #fff;
+    background-color: #1295FA;
+    border: 0.1rem solid #AEFAFC;
+}
+
+#start-button:hover {
+    color: #73DD7E;
+}
+
+#final_result {
+    color: #fff;
+    background-color:#9A30F3;
+    border: 0.1rem solid #AEFAFC;
+}
+
+#final_result:hover {
+    color: #73DD7E;
+}
+
+#writing_text {
+    color: #9A30F3;
+}
+
+#final-result-content {
+    color: #1295FA;
+}
+
+textarea#writing_text.form-control, #final-result-content {
+    min-height: 55px;
+    height: 55px;
+}
+
+#final-result-content {
+    margin: 0 0 1rem;
+    background-color: #fff;
+    padding: 0.5rem;
+}
+
+.error {
+    color: crimson;
+    background-color: #fff;
+    margin: 1rem 1rem 0;
+    padding: 0.1rem;
+    text-align: center;
+}
+
+hr {
+    margin: 0 3rem;
+    margin-top: 1.9rem;
+}
+
+#footer {
+    margin-top: 13rem;
+    text-align: center;
+}
+
+.fa-inverse {
+    background-color: #1295FA;
+    border: 0.1rem solid #AEFAFC;
+    border-radius: 55%;
+    color: #fff;
+}
+
+.fa-inverse:hover {
+    color: #6ABFA6;
+    width: 3.7rem;
+}
+
+.fas {
+    color: transparent !important;
+}
+
+.copyright {
+    background-color: #AEFAFC;
+    border: 0.1rem solid #1295FA;
+    border-radius: 0.5rem;
+    color: #9A30F3;
+    padding: 0.3rem;
+}
+
+# --------------------------------------------------- 🔥👌🏿💚😇❤️🔥 ---------------------------------------------------#

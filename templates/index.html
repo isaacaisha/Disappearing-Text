@@ -1,0 +1,125 @@
+{% extends 'header.html' %}
+
+{% block title %} Welcom€ to{% endblock %}
+
+{% block head %}
+	{{ super() }}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h3 class="h3_subtitle">
+        The Most Dangerous<br >Writing App,<br >Don’t stop writing.<br >Or all progress will be lost. ¡!¡
+    </h3>
+</div>
+
+<hr >
+
+{{ writing_text_form.csrf_token }}
+<div class="alert error" id="error-message" style="display: none;"></div>
+
+<div class="container">
+    <h3 class="mb-4 h3_start"></h3>
+    <div class="div_start">
+        <form method="post" action="{{ url_for('home') }}" id="writing-form">
+            {% if error_message %}
+                <div class="alert alert-info">
+                    {{ error_message }}
+                </div>
+            {% endif %}
+            <div class="text-center">
+                <button id="start-button" type="button" class="btn"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.9rem; --bs-btn-font-size: 1.3rem;">
+                    Click to Start Writing ¡!¡
+                </button>
+            </div>
+            <label for="writing_text" class="label_">Write Your Text, below:</label>
+            <div class="form-floating" id="textarea-container" style="display: none;">
+                <textarea class="form-control" id="writing_text" name="writing_text"></textarea>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr >
+
+<div class="container">
+    <h3 class="mb-4 h3_result"></h3>
+    <textarea class="form-control result" id="final-result-content" style="display: none;">
+        {{ writing_text_data }}
+    </textarea>
+    <div class="container">
+        <div class="text-center">
+            <button id="final_result" type="button" class="btn"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.9rem; --bs-btn-font-size: 1.3rem;">
+                Click for Final Result ¡!¡
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+<script>
+    let writingTextData = ""; // Initialize a variable to store the text data
+    let typingTimeout; // Initialize a variable to track typing timeout
+
+    // Function to handle the "Start" button click
+    document.getElementById('start-button').addEventListener('click', function () {
+        // Show the textarea container
+        const textareaContainer = document.getElementById('textarea-container');
+        textareaContainer.style.display = 'block';
+
+        // Focus on the textarea
+        const textarea = document.getElementById('writing_text');
+        textarea.focus();
+
+        // Listen for input in the textarea
+        textarea.addEventListener('input', function () {
+            // Clear any previous typing timeout
+            clearTimeout(typingTimeout);
+
+            // Set a new typing timeout
+            typingTimeout = setTimeout(function () {
+                // If the user hasn't typed for 5 seconds, clear the textarea
+                textarea.value = "";
+            }, 5000); // 5000 milliseconds 5 seconds)
+        });
+    });
+
+    // Add a click event listener to the "Final Result" button
+    document.getElementById('final_result').addEventListener('click', function () {
+        // Check if the textarea is empty
+        if (writingTextData.trim() === "") {
+            // Display an error message
+            document.getElementById('error-message').textContent = "Please You Have To Write Some Text First ¡!¡";
+            document.getElementById('error-message').style.display = 'block';
+
+            // Hide the "Final Result" content since there's no text
+            document.getElementById('final-result-content').style.display = 'none';
+        } else {
+            // Clear any previous error message
+            document.getElementById('error-message').textContent = "";
+            document.getElementById('error-message').style.display = 'none';
+
+            // Display the content in the "Final Result" section
+            document.getElementById('final-result-content').textContent = writingTextData;
+            document.getElementById('final-result-content').style.display = 'block';
+        }
+    });
+
+    // Listen for input in the textarea and store the text
+    document.getElementById('writing_text').addEventListener('input', function () {
+        writingTextData = document.getElementById('writing_text').value;
+    });
+
+    // Initially, hide the "Final Result" content and error message
+    document.getElementById('final-result-content').style.display = 'none';
+    document.getElementById('error-message').style.display = 'none';
+</script>
+
+{% endblock %}
